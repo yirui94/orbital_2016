@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   get 'signup' => 'users#new'
   resources :users
-
+  resources :account_activations, only: [:edit]
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
