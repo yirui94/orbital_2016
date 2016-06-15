@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   resources :users
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :account_activations, only: [:edit]
+  resources :microposts, only: [:create, :destroy]
+
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'

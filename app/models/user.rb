@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+	has_many :micropost, dependent: :destroy
+
 	attr_accessor :remember_token, :activation_token, :reset_token
 
 	validates :name, presence: true, length: { maximum: 50}
@@ -12,7 +14,9 @@ class User < ActiveRecord::Base
 	has_secure_password
 	validates :password, length: { minimum: 8 }, allow_blank: true
 
-
+	def feed
+		Micropost.where("user_id = ?", id)
+	end
 
 	def User.digest(string)
 		cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
