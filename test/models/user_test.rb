@@ -70,7 +70,7 @@ class UserTest < ActiveSupport::TestCase
 
   test "associated microposts should be destroyed when user is" do
   	@user.save
-  	@user.micropost.create(content: "Lorem")
+  	@user.micropost.create(content: "Lorem", remote_picture_url: Faker::Placeholdit.image)
   	assert_difference 'Micropost.count', -1 do
   		@user.destroy
   	end

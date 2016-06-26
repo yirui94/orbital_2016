@@ -4,7 +4,16 @@
 /* universal */
 
 body {
-	padding-top: 60px;
+	font-family: 'Montserrat', sans-serif;
+	padding: 60px;
+	color: #2f2f2f;
+	a {
+		text-decoration: none;
+		&:hover {
+			color:#1abc9c;
+			text-decoration: none;
+		}
+	}
 }
 
 section {
@@ -15,15 +24,59 @@ textarea {
 	resize: vertical;
 }
 
-.center {
-	text-align: center;
+.jumbotron {
+	background-color: #fff;
+	color: #2f2f2f;
 }
 
-.center h1 {
-	margin-bottom: 10px;
+.logo-small {
+	color:#1abc9c;
+	font-size: 60px;
+}
+
+.btn {
+	background-color: #1abc9c;
+	color: #fff;
+	border-color: #1abc9c;
+	&:hover {
+		background-color: #fff;
+		color: #1abc9c;
+	}
+}
+
+.row {
+	.welcome {
+		padding: 80px 0px 40px; 
+	}
 }
 
 /* header */
+
+header { 
+	background-color: #1abc9c;
+
+	ul li {
+		color: #fff;
+		list-style-type: none;
+		padding-top: 14px;
+		margin-right: 14px;
+	}
+
+	.active {
+		color: #2f2f2f;
+	}
+
+	a {
+		color: #fff;
+		text-align: center;
+		text-decoration: none;
+
+		&:hover {
+			color: #2f2f2f;
+			text-decoration: none;
+		}
+	}
+}
 
 #logo {
 	float: left;
@@ -31,19 +84,9 @@ textarea {
 	font-size: 1.7em;
 	color: #fff;
 	text-transform: uppercase;
-	letter-spacing: -1px;
+	letter-spacing: 1px;
 	padding-top: 9px;
 	font-weight: bold;
-}
-
-#logo:hover {
-	color:#fff;
-	text-decoration: none;
-}
-
-header ul li {
-	padding-top: 14px;
-	margin-left: 15px;
 }
 
 /* footer */
@@ -51,16 +94,16 @@ header ul li {
 footer {
 	margin-top: 45px;
 	padding-top: 5px;
-	border-top: 1px solid #eaeaea;
-	color: #777;
+	border-top: solid 1px;
+	color: #2f2f2f;
 }
 
 footer a {
-	color: #555;
+	color: #2f2f2f;
 }
 
 footer a:hover {
-	color: #222;
+	color: #1abc9c;
 }
 
 footer small {
@@ -116,8 +159,6 @@ aside {
 .gravatar_edit {
 	margin-top: 15px;
 }
-
-
 
 /* mixins, variables, etc */
 

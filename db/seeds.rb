@@ -27,9 +27,12 @@ User.create!( name: "Example User",
 end
 
 users = User.order(:created_at).take(6)
-50.times do
+20.times do
 	content = Faker::Lorem.sentence(5)
-	users.each { |user| user.micropost.create!(content: content)}
+	users.each do |user| 
+		picture = Faker::Placeholdit.image
+		user.micropost.create!(content: content, remote_picture_url: picture)
+	end
 end
 
 users = User.all
