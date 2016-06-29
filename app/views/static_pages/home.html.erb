@@ -7,14 +7,14 @@
 			<section class="stats">
 				<%= render 'shared/stats' %>
 			</section>
-			<section class="micropost_form">
-				<%= render 'shared/micropost_form' %>
-			</section>
 		</aside>
-		<div class="col-md-8">
-			<h3>Recently posted Artworks</h3>
-			<%= render 'shared/feed' %>
-		</div>
+		<section class="micropost_form">
+			<%= render 'shared/micropost_form' %>
+		</section>
+	</div>
+	<div class="col-md-8">
+		<center><h3>Recently posted Artworks</h3></center>
+		<%= render 'shared/feed' %>
 	</div>
 <% else %>
 	<div class= "row text-center">
