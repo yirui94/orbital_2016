@@ -1,4 +1,1 @@
-== README
-This is the sample application for the [*Ruby on Rails Tutorial:
-Learn Web Development with Rails*] (http://www.railstutorial.org/)
-by [Michael Hartl]
+This is a NUS Oribtal project by Team 1211 
