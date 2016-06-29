@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
 	before_create :create_activation_digest
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\d.]+\.[a-z]+\z/i
 	validates :email, presence: true, length: { maximum: 255},
-										format: { with: VALID_EMAIL_REGEX},
+										format: { with: VALID_EMAIL_REGEX },
 										uniqueness: { case_sensitive: false } 
 	has_secure_password
 	validates :password, length: { minimum: 8 }, allow_blank: true
@@ -75,6 +75,10 @@ class User < ActiveRecord::Base
 
 	def following?(other_user)
 		self.following.include?(other_user)
+	end
+
+	def User.search(string)
+		User.where("name LIKE ?", "%#{string}%")
 	end
 
 	private
