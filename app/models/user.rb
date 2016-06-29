@@ -78,7 +78,11 @@ class User < ActiveRecord::Base
 	end
 
 	def User.search(string)
-		User.where("name LIKE ?", "%#{string}%")
+		if Rails.env.production?
+			User.where("name ILIKE ?", "%#{string}%")
+		else
+			User.where("name LIKE ?", "%#{string}%")
+		end
 	end
 
 	private
