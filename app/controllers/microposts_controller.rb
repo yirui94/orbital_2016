@@ -19,6 +19,14 @@ class MicropostsController < ApplicationController
 		redirect_to request.referrer || root_url
 	end
 
+	def index
+		if params[:search]
+			@microposts = Micropost.search(params[:search]).paginate(page: params[:page])
+		else
+			@microposts = Micropost.paginate(page: params[:page])
+		end
+	end
+
 	private
 
 		def micropost_params

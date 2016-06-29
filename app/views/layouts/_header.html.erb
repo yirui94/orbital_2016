@@ -8,6 +8,8 @@
 			<%= link_to "Home", root_path %></li>
 			<li class="<%= 'active' if params[:controller] == 'users' %>">
 			<%= link_to "Artists", users_path %></li>
+			<li class="<%= 'active' if params[:controller] == 'microposts' %>">
+			<%= link_to "Artworks", microposts_path %></li>
 
 			<% if logged_in? %>
 				<li class="dropdown">

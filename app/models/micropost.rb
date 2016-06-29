@@ -7,6 +7,14 @@ class Micropost < ActiveRecord::Base
   default_scope -> { order(created_at: :desc) }
   validate :picture_size
 
+  def Micropost.search(string)
+    if Rails.env.production?
+      Micropost.where("content ILIKE ?", "%#{string}%")
+    else
+      Micropost.where("content LIKE ?", "%#{string}%")
+    end
+  end
+
   private
 
    #validates size of uploaded picture
