@@ -1,6 +1,6 @@
 <% if logged_in? %>
 	<div class="row">
-		<aside class="col-md-4">
+		<aside class="col-md-3 col-md-offset-2">
 			<section class="user_info">
 				<%= render 'shared/user_info' %>
 			</section>
@@ -8,12 +8,12 @@
 				<%= render 'shared/stats' %>
 			</section>
 		</aside>
-		<section class="micropost_form">
+		<section class="micropost_form col-md-5">
 			<%= render 'shared/micropost_form' %>
 		</section>
 	</div>
 	<div class="row">
-		<div class="col-md-8">
+		<div class="col-md-8 col-md-offset-2">
 			<center><h3>Recently posted Artworks</h3></center>
 			<%= render 'shared/feed' %>
 		</div>
