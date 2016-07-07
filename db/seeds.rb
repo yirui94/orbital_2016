@@ -32,6 +32,7 @@ users = User.order(:created_at).take(6)
 	users.each do |user| 
 		picture = Faker::Placeholdit.image
 		user.micropost.create!(content: content, remote_picture_url: picture)
+		user.create_user_detail(introduction: content)
 	end
 end
 

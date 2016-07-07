@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+	has_one :user_detail, dependent: :destroy
 	has_many :micropost, dependent: :destroy
 	has_many :active_relationships, class_name: "Relationship",
 									foreign_key: "follower_id",

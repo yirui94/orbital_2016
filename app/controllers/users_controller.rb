@@ -37,10 +37,11 @@ class UsersController < ApplicationController
   	if @user.save
   		UserMailer.account_activation(@user).deliver_now
   		flash[:info] = "Please check your email to activate the account"
+      @user.create_user_detail
   		redirect_to root_url
-	else
-		render 'new'
-	end
+  	else
+  		render 'new'
+  	end
   end
 
   def edit

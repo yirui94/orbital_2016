@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :account_activations, only: [:edit]
   resources :microposts, only: [:create, :destroy, :index], path: 'artworks'
   resources :relationships, only: [:create, :destroy]
+  resources :user_details, only: [:edit, :update], path: 'profile'
 
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'

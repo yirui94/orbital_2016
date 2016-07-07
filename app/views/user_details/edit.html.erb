@@ -1,0 +1,35 @@
+<% provide(:title, "Update Profile Details") %>
+<h1>Update your Profile</h1>
+
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<%= form_for(@user_detail) do |f| %>
+			<%= render 'shared/error_messages', object: f.object %>
+
+			<%= f.label :introduction %>
+			<%= f.text_area :introduction, class: 'form-control' %>
+
+			<%= f.label :website %>
+			<%= f.url_field :website, class: 'form-control' %>
+
+			<%= f.label :country, "Country" %>
+			<%= f.country_select :country, include_blank: 'Select a country',
+											 class: 'form-control' %>
+
+			<%= f.label :medium, "Medium of Specialisation" %>
+			<%= f.select :medium, [['Oil', 'Oil'], ['Watercolour', 'Watercolour'],
+								   ['Acrylic', 'Acrylic'], ['Gouache', 'Gouache'],
+								   ['Pencil/Pen', 'Pencil/Pen'], ['Others', 'Others']],
+									include_blank: 'Select a medium', 
+									class: 'form-control' %>
+
+			<%= f.submit "Save changes", class: "btn btn-primary" %>
+		<% end %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<%= link_to "Click here to edit account details", edit_user_path(current_user) %>
+	</div>
+</div>
