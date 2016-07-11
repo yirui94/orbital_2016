@@ -1,16 +1,17 @@
 <%= form_for(@micropost, html: { multipart: true }) do |f| %>
 	<%= render 'shared/error_messages', object: f.object %>
-	<span class='picture'>
-	    <%= f.label :picture %>
-		<%= f.file_field :picture, accept: 'image/jpeg, image/gif, image/png' %>
-		<p class="help-block">Upload a picture (jpg, png or gif) less than 5MB</p>
-	</span>
 
 	<div class="field">
 		<%= f.label :content, "Description" %>
 		<%= f.text_area :content, placeholder: "Describe your artwork..." %>
 	</div>
-
+	
+	<span class='picture'>
+	    <%= f.label :picture %>
+		<%= f.file_field :picture, accept: 'image/jpeg, image/gif, image/png' %>
+		<p class="help-block">Upload a picture (jpg, png or gif) less than 5MB</p>
+	</span>
+	
 	<%= f.submit "Post", class: "btn btn-primary" %>
 <% end %>
 
