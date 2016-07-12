@@ -17,7 +17,7 @@
 		<ul class="w3-ul w3-card-4">
 			<li class="w3-padding-16">
 				<% if logged_in? && current_user.admin? && !current_user?(user) %>
-				<button class="w3-btn w3-red w3-right w3-round -xxlarge"><%= link_to "delete", user, method: :delete, data: { confirm: "You sure?"} %></button>
+				<button class="w3-btn w3-right w3-round -xxlarge"><%= link_to "delete", user, method: :delete, data: { confirm: "You sure?"} %></button>
 				<% end %>
 				<class="w3-left w3-circle w3-margin-right" style="width:60px"><%= gravatar_for user %>
 				<span class="w3-xlarge"><%= link_to user.name, user %></span><br>

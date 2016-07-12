@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+
 
 <% if logged_in? %>
 	<div class="container-fluid">
@@ -26,30 +26,21 @@
 
 	<%= render 'shared/feed' %>
 	
-
-
-
-
-	
 <% else %>
 	<div class= "row text-center">
-		<h1 class= 'welcome'>An online art gallery and marketplace</h1>
+		<div class="containter-fluid">
+		<div class="home-bg">
+			<br><br><br><br><br>
+			<font color="white"><div class="w3-xxxlarge">Your online art gallery and marketplace</div></font>
+		</div>
+		</div>
 		<br>
-		<div class = "col-sm-4">
-			<span class="glyphicon glyphicon-user logo-small"></span>
-			<h3>Browse artworks from local artists</h3>
-		</div>
-		<div class = "col-sm-4">
-			<span class="glyphicon glyphicon-upload logo-small"></span>
-			<h3>Upload your own artworks</h3>
-		</div>
-		<div class = "col-sm-4">
-			<span class="glyphicon glyphicon-comment logo-small"></span>
-			<h3>Let them know if you are interested in purchasing</h3>
-		</div>
 	</div>
-	<div class= "row text-center">
-		<br>
-		<%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary inline-block center" %>
-	</div>
+	
+	<%= render 'shared/top_artists' %>
+	<br><br>
+	<%= render 'shared/top_artworks' %>
+	<br><br>
+	<%= render 'shared/final_features' %>
+
 <% end %>
