@@ -28,11 +28,12 @@ end
 
 
 
-users = User.order(:created_at).take(6)
+users = User.order(:created_at)
 users.each do |user|
 	user.create_user_detail(introduction: 'introPH', country: 'Albania', medium: 'Oil' )
 end
 
+users = User.order(:created_at).take(6)
 20.times do
 	content = Faker::Lorem.sentence(5)
 	users.each do |user| 

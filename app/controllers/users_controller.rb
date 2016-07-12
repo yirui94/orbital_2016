@@ -31,7 +31,9 @@ class UsersController < ApplicationController
   	@user = User.find(params[:id])
   	@microposts = @user.micropost.paginate(page: params[:page])
     @user_detail = @user.user_detail
-    @user_detail.country = ISO3166::Country.find_country_by_alpha2(@user_detail.country).name
+    if !@user_detail.country.blank?
+      @user_detail.country = ISO3166::Country.find_country_by_alpha2(@user_detail.country).name
+    end
   end
 
   def create
