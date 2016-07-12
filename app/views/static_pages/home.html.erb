@@ -1,6 +1,8 @@
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+
 <% if logged_in? %>
-	<div class="row">
-		<aside class="col-md-3 col-md-offset-2">
+	<div class="container-fluid">
+		<aside class="col-md-5">
 			<section class="user_info">
 				<%= render 'shared/user_info' %>
 			</section>
@@ -8,16 +10,27 @@
 				<%= render 'shared/stats' %>
 			</section>
 		</aside>
-		<section class="micropost_form col-md-5">
+
+		<section class="micropost_form col-md-6 col-md-offset-1">
 			<%= render 'shared/micropost_form' %>
 		</section>
 	</div>
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<center><h3>Recently posted Artworks</h3></center>
-			<%= render 'shared/feed' %>
-		</div>
+	<br>
+	<br>
+	<div class="container-fluid">
+		<header class="w3-container w3-teal">
+			<h2><center>Recently posted artworks</center></h2>
+		</header>
+		<br><br>
 	</div>
+
+	<%= render 'shared/feed' %>
+	
+
+
+
+
+	
 <% else %>
 	<div class= "row text-center">
 		<h1 class= 'welcome'>An online art gallery and marketplace</h1>

@@ -311,3 +311,12 @@ span.picture {
 	margin-top: 45px;
 	@include box_sizing;
 }
+
+p2 {
+	word-break: break-word;
+	word-wrap: break-word;
+}
+
+.floating-card {
+	display: in-line;
+}
