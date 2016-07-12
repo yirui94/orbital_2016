@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+
 <% if logged_in? %>
 	<div class="container-fluid">
 		<aside class="col-md-5">
@@ -15,12 +17,20 @@
 	</div>
 	<br>
 	<br>
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<center><h2>Recently posted Artworks</h2></center>
-			<%= render 'shared/feed' %>
-		</div>
+	<div class="container-fluid">
+		<header class="w3-container w3-teal">
+			<h2><center>Recently posted artworks</center></h2>
+		</header>
+		<br><br>
 	</div>
+
+	<%= render 'shared/feed' %>
+	
+
+
+
+
+	
 <% else %>
 	<div class= "row text-center">
 		<h1 class= 'welcome'>An online art gallery and marketplace</h1>

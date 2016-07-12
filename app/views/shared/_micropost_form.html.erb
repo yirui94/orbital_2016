@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
 <%= form_for(@micropost, html: { multipart: true }) do |f| %>
 	<%= render 'shared/error_messages', object: f.object %>
 
@@ -12,7 +14,7 @@
 		<p class="help-block">Upload a picture (jpg, png or gif) less than 5MB</p>
 	</span>
 	
-	<%= f.submit "Post", class: "btn btn-primary" %>
+	<%= f.submit "Post it!", class: "btn btn-primary" %>
 <% end %>
 
 <script type="text/javascript">
