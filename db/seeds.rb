@@ -30,7 +30,7 @@ end
 
 users = User.order(:created_at)
 users.each do |user|
-	user.create_user_detail(introduction: 'introPH', country: 'Albania', medium: 'Oil' )
+	user.create_user_detail(introduction: 'introPH', country: 'AL', medium: 'Oil' )
 end
 
 users = User.order(:created_at).take(6)
