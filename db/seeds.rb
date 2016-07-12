@@ -26,13 +26,18 @@ User.create!( name: "Example User",
     				activated_at: Time.zone.now)
 end
 
+
+
 users = User.order(:created_at).take(6)
+users.each do |user|
+	user.create_user_detail(introduction: 'introPH', country: 'Albania', medium: 'Oil' )
+end
+
 20.times do
 	content = Faker::Lorem.sentence(5)
 	users.each do |user| 
 		picture = Faker::Placeholdit.image
 		user.micropost.create!(content: content, remote_picture_url: picture)
-		user.create_user_detail(introduction: content)
 	end
 end
 

@@ -6,6 +6,12 @@
 				<%= gravatar_for @user %>
 				<%= @user.name %>
 			</h1>
+			<p>
+				<%= @user_detail.country %>
+			</p>
+			<p>
+				Specialises in <%= @user_detail.medium %> Painting
+			</p>
 		</section>
 		<section class='stats'>
 			<%= render 'shared/stats' %>

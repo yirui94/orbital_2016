@@ -1,13 +1,25 @@
 <div class="row">
   <div class="col-lg-6">
-      <%= form_tag(users_path, :method => "get", id: "search-form-artists") do %>
-      	  <div class="input-group">
-		  <%= text_field_tag :search, params[:search], placeholder: "Search Artists",
-							  class: "form-control" %>
-	      <span class="input-group-btn">
-		  <%= submit_tag "Search!", class: "btn btn-default" %>
-	      </span>
-          </div>
+      <%= form_tag(users_path, :method => "get", id: "search-form-artists", class: "form-horizontal") do %>
+		  	<div>
+				<%= text_field_tag :search, params[:search], placeholder: "Search Artists",
+								  class: "form-control" %>
+		
+				<%= label_tag :country, "Country" %>
+				<%= select_tag :country, options_for_select(ISO3166::Country.translations.invert),
+												include_blank: 'Select a country',
+												 class: 'form-control' %>
+										
+				<%= label_tag :medium, "Medium of Specialisation" %>
+				<%= select_tag :medium,
+								options_for_select([['Oil', 'Oil'], ['Watercolour', 'Watercolour'],
+									   ['Acrylic', 'Acrylic'], ['Gouache', 'Gouache'],
+									   ['Pencil/Pen', 'Pencil/Pen'], ['Others', 'Others']]), 
+										include_blank: 'Select a medium',
+										class: 'form-control' %>
+									
+				<%= submit_tag "Search!", class: "btn btn-default" %>
+          	</div>
 	   <% end %>
   </div>
 </div>

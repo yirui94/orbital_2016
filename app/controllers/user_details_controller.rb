@@ -7,9 +7,21 @@ class UserDetailsController < ApplicationController
 	end
 
 	def update
+		@user_detail = current_user.user_detail
+	  	if @user_detail.update_attributes(user_detail_params)
+	  		flash[:success] = "Profile updated"
+	  		redirect_to current_user
+	  	else
+	  		render 'edit'
+	  	end
 	end
 
 	private 
+
+		def user_detail_params
+			params.require(:user_detail).permit(:introduction, :website,
+												:country, :medium)
+		end
 
 		def correct_user
 			@user_detail = current_user.user_detail

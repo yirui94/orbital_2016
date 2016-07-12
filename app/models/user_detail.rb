@@ -7,5 +7,6 @@ class UserDetail < ActiveRecord::Base
   					  format: { with: VALID_URL_REGEX },
   					  allow_blank: true
   validates :medium, length: { maximum: 255 }, allow_blank: true
+  validates :country, length: { maximum: 255 }, allow_blank: true
 
 end

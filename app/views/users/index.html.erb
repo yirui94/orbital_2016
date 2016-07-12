@@ -2,12 +2,8 @@
 <h1>Browse Artists</h1>
 
 <%= render 'search_form' %>
-
-<% if @users.empty? %>
-
-	<p>There are no artists called: <%= params[:search] %></p>
-
-<% else %>
+<br>
+<div class = 'row'>
 	<%= will_paginate %>
 
 	<ul class = "users">
@@ -24,4 +20,4 @@
 	</ul>
 
 	<%= will_paginate %>
-<% end %>
+</div>

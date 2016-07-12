@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
 	attr_accessor :remember_token, :activation_token, :reset_token
 
-	validates :name, presence: true, length: { maximum: 50}
+	validates :name, presence: true, length: { maximum: 50 }
 
 	before_save :downcase_email
 	before_create :create_activation_digest
@@ -22,6 +22,22 @@ class User < ActiveRecord::Base
 										uniqueness: { case_sensitive: false } 
 	has_secure_password
 	validates :password, length: { minimum: 8 }, allow_blank: true
+
+	scope :has_name, -> (name) { 
+		if Rails.env.production?
+			User.where("name ILIKE ?", "%#{name}%")
+		else
+			User.where("name LIKE ?", "%#{name}%")
+		end 
+	}	
+
+	scope :has_country, -> (country) {
+		includes(:user_detail).where(user_details: { country: country })
+	}
+
+	scope :has_medium, -> (medium) {
+		includes(:user_detail).where(user_details: { medium: medium })
+	}
 
 	def feed
 		Micropost.where("user_id = ?", id)
@@ -76,14 +92,6 @@ class User < ActiveRecord::Base
 
 	def following?(other_user)
 		self.following.include?(other_user)
-	end
-
-	def User.search(string)
-		if Rails.env.production?
-			User.where("name ILIKE ?", "%#{string}%")
-		else
-			User.where("name LIKE ?", "%#{string}%")
-		end
 	end
 
 	private
