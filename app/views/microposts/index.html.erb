@@ -8,9 +8,18 @@
 	<p>There are no artworks described by: <%= params[:search] %></p>
 
 <% else %>
-
-	<ol class = "microposts">
-		<%= render @microposts %>
-	</ol>
-
+	<br><br>
+	<div class="container-fluid">
+		<header class="w3-container w3-teal">
+			<h2><center>Recently posted artworks</center></h2>
+		</header>
+		<br><br>
+	</div>
+	
+	<div class="container-fluid">
+		<ol class = "microposts">
+			<%= render @microposts %>
+		</ol>
+		<%= will_paginate @microposts %>
+	</div>
 <% end %>
