@@ -27,14 +27,9 @@
 	<%= render 'shared/feed' %>
 	
 <% else %>
-	<div class= "row text-center">
-		<div class="containter-fluid">
-		<div class="home-bg">
-			<br><br><br><br><br>
-			<font color="white"><div class="w3-xxxlarge">Your online art gallery and marketplace</div></font>
-		</div>
-		</div>
-		<br>
+	<div class="bg"> </div>
+	<div class="jumbotron">
+		<h1>Your online artgallery and marketplace</h1>
 	</div>
 	
 	<%= render 'shared/top_artists' %>
@@ -44,3 +39,16 @@
 	<%= render 'shared/final_features' %>
 
 <% end %>
+
+
+<script>
+var jumboHeight =$('.jumbotron').outerHeight();
+function parallax(){
+	var scrolled = $(window).scrollTop();
+	$('.bg').css('height', (jumboHeight-scrolled) + 'px');
+}
+
+$(window).scroll(function(e){
+	parallax();
+});
+</script>
