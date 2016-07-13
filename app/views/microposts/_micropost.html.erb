@@ -1,28 +1,4 @@
-<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-
-<div class="col-md-4">
-	<div class="w3-card-8">
-	
-	<header class="w3-container w3-teal">
-		<p2><h3>Name of artpiece</h3></p2>
-	</header>
-
+<div class="pin">
 	<%= image_tag micropost.picture.url, :style => "width:100%" %>
-	<br><br>
-	
-	<div class="w3-container">
-		<p2><%= micropost.content %></p2>
- 	</div>
- 	<br>
- 	
-	<% if current_user?(micropost.user) %>
-		<button class="w3-btn w3-grey">
-			<font color="white">
-			<%= link_to "", micropost, method: :delete, data: { confirm: "You sure you want to remove this post?" }, class: "glyphicon glyphicon-remove", style:"color:white" %></i>
-			</font>
-		</button>
-	<% end %>
-	
- 	</div>
+	<p> Dimensions & price</p>
 </div>
