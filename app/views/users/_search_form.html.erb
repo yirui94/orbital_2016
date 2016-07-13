@@ -2,6 +2,7 @@
   <div class="col-lg-6">
       <%= form_tag(users_path, :method => "get", id: "search-form-artists", class: "form-horizontal") do %>
 		  	<div>
+		  		<%= label_tag :medium, "Name" %>
 				<%= text_field_tag :search, params[:search], placeholder: "Search Artists",
 								  class: "form-control" %>
 		
@@ -17,7 +18,7 @@
 									   ['Pencil/Pen', 'Pencil/Pen'], ['Others', 'Others']]), 
 										include_blank: 'Select a medium',
 										class: 'form-control' %>
-									
+				<br>
 				<%= submit_tag "Search!", class: "btn btn-default" %>
           	</div>
 	   <% end %>

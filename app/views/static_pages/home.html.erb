@@ -1,4 +1,3 @@
-
 <% if logged_in? %>
 	<div class="container-fluid">
 		<aside class="col-md-5">
@@ -25,30 +24,29 @@
 
 	<%= render 'shared/feed' %>
 	
-
-
-
-
-	
 <% else %>
-	<div class= "row text-center">
-		<h1 class= 'welcome'>An online art gallery and marketplace</h1>
-		<br>
-		<div class = "col-sm-4">
-			<span class="glyphicon glyphicon-user logo-small"></span>
-			<h3>Browse artworks from local artists</h3>
-		</div>
-		<div class = "col-sm-4">
-			<span class="glyphicon glyphicon-upload logo-small"></span>
-			<h3>Upload your own artworks</h3>
-		</div>
-		<div class = "col-sm-4">
-			<span class="glyphicon glyphicon-comment logo-small"></span>
-			<h3>Let them know if you are interested in purchasing</h3>
-		</div>
+	<div class="bg"> </div>
+	<div class="jumbotron">
+		<h1>Your online artgallery and marketplace</h1>
 	</div>
-	<div class= "row text-center">
-		<br>
-		<%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary inline-block center" %>
-	</div>
+	
+	<%= render 'shared/top_artists' %>
+	<br><br>
+	<%= render 'shared/top_artworks' %>
+	<br><br>
+	<%= render 'shared/final_features' %>
+
 <% end %>
+
+
+<script>
+var jumboHeight =$('.jumbotron').outerHeight();
+function parallax(){
+	var scrolled = $(window).scrollTop();
+	$('.bg').css('height', (jumboHeight-scrolled) + 'px');
+}
+
+$(window).scroll(function(e){
+	parallax();
+});
+</script>

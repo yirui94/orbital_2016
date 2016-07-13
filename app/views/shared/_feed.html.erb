@@ -1,7 +1,11 @@
 <div class="container-fluid">
 	<%if @feed_items.any? %>
-		<% @feed_items.each do |feed_item| %>
-			<%= render feed_item %>
-		<% end %>
+		<div id="wrapper">
+			<div id="columns">
+				<% @feed_items.each do |feed_item| %>
+					<%= render feed_item %>
+				<% end %>
+			</div>
+		</div>
 	<% end %>
 </div>

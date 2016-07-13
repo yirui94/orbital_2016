@@ -1,25 +1,4 @@
-<div class="col-md-4">
-	<div class="w3-card-8">
-	
-	<header class="w3-container w3-teal">
-		<h4>Name of artpiece</h4>
-	</header>
-
+<div class="pin">
 	<%= link_to image_tag(micropost.picture.url, :style => "width:100%"), micropost %>
-	<br><br>
-	
-	<div class="w3-container">
-		<p2><%= micropost.title %></p2>
- 	</div>
- 	<br>
- 	
-	<% if current_user?(micropost.user) %>
-		<button class="w3-btn w3-grey">
-			<font color="white">
-			<%= link_to "", micropost, method: :delete, data: { confirm: "You sure you want to remove this post?" }, class: "glyphicon glyphicon-remove", style:"color:white" %></i>
-			</font>
-		</button>
-	<% end %>
-	
- 	</div>
+	<p> Dimensions & price</p>
 </div>
