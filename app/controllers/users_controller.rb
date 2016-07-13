@@ -68,8 +68,8 @@ class UsersController < ApplicationController
     else
       @users = User.paginate(page: params[:page])
     end
-    @users = @users.has_country(params[:country]) if params[:country].present?
-    @users = @users.has_medium(params[:medium]) if params[:medium].present?
+  @users = @users.has_country(params[:country]) if params[:country].present?
+  @users = @users.has_medium(params[:medium]) if params[:medium].present?
   end
 
   private
