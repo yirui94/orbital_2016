@@ -1,0 +1,49 @@
+<% provide(:title, @micropost.title) %>
+<div class="row">
+	<div class= "col-md-6 col-md-offset-3">
+		<%= image_tag(@micropost.picture.url, :style => "width:100%") %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-6 col-md-offset-1">
+		<h1><%= @micropost.title %></h1>
+		<p><i><%= @micropost.width %></i> "W x <i><%= @micropost.height %></i> "H </p>
+		<p>SGD <%= number_to_currency @micropost.price %></p>
+		<p class="inline"><i>by: <h3 class="inline" ><%= link_to @user.name, @user %></h3></i></p>
+	</div>
+	<div class="col-md-4 col-md-offset-3">
+	</div>
+</div>
+<br><br>
+<div class="row col-md-offset-1">
+	<div class="tabbable">
+		<ul class="nav nav-tabs">
+		  <li class="active">
+		    <a href="#artwork-details" data-toggle="tab">Artwork Details</a>
+		  </li>
+		  <li><a href="#artist-details" data-toggle="tab">Artist Details</a></li>
+		</ul>
+	</div>
+	<div class="tab-content">
+		<div class="tab-pane active" id="artwork-details">
+			<section>
+				<p><b>Medium:</b><%= @micropost.medium %></p>
+				<p><b>Size:</b><%= @micropost.width %> "W <%= @micropost.height %> "H </p>
+				<p><b>Recommended Price (SGD):</b><%= number_to_currency @micropost.price %></p>
+				<p><b>Description:</b> <%= @micropost.content %></p>
+			</section>
+		</div>
+
+		<div class="tab-pane" id="artist-details">
+			<section>
+				<p><b>Bio:</b><%= @user_detail.introduction %></p>
+				<p><b>Country:</b><%= @user_detail.country %></p>
+				<p><b>Website:</b><%= @user_detail.website %></p>
+			</section>
+		</div>
+	</div>
+
+	
+</div>
+

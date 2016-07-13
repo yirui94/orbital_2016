@@ -1,20 +1,51 @@
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-
 <%= form_for(@micropost, html: { multipart: true }) do |f| %>
 	<%= render 'shared/error_messages', object: f.object %>
 
 	<div class="field">
+		<%= f.label :title, "Title" %>
+		<%= f.text_field :title, placeholder: "Title of your artwork", class: 'form-control' %>
+	</div>
+
+	<div class="field">
 		<%= f.label :content, "Description" %>
-		<%= f.text_area :content, placeholder: "Describe your artwork..." %>
+		<%= f.text_area :content, placeholder: "Describe your artwork... (Optional)", class: 'form-control' %>
+	</div>
+
+	<div class="field">
+		<%= f.label :medium, "Medium of Artwork" %>
+		<%= f.select :medium, [['Oil', 'Oil'], ['Watercolour', 'Watercolour'],
+							   ['Acrylic', 'Acrylic'], ['Gouache', 'Gouache'],
+							   ['Pencil/Pen', 'Pencil/Pen'], ['Others', 'Others']],
+								include_blank: 'Select a medium', 
+								class: 'form-control' %>
+	</div>
+
+	<%= f.label :width, "Width and Height" %>
+	<div class= "field input-group">
+		<span class="input-group-addon">W</span>
+		<%= f.number_field :width, in: 0.00..99.00, step: 0.25, class: 'form-control' %>
+		<span class="input-group-addon">Inches</span>
+	</div>
+
+	<div class= "field input-group">
+		<span class="input-group-addon">H</span>
+		<%= f.number_field :height, in: 0.00..99.00, step: 0.25, class: 'form-control' %>
+		<span class="input-group-addon">Inches</span>
+	</div>
+
+	<%= f.label :price, "Estimated Price" %>
+	<div class="field input-group">
+		<span class="input-group-addon">SGD</span>
+		<%= f.number_field :price, in: 0.00..999999.99, step: 0.01, class: 'form-control' %>
 	</div>
 	
 	<span class='picture'>
 	    <%= f.label :picture %>
-		<%= f.file_field :picture, accept: 'image/jpeg, image/gif, image/png' %>
+		<%= f.file_field :picture, accept: 'image/jpeg, image/gif, image/png', class: 'form-control' %>
 		<p class="help-block">Upload a picture (jpg, png or gif) less than 5MB</p>
 	</span>
 	
-	<%= f.submit "Post it!", class: "btn btn-primary" %>
+	<%= f.submit "Post", class: "btn btn-primary" %>
 <% end %>
 
 <script type="text/javascript">

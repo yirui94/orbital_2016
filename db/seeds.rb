@@ -26,19 +26,26 @@ User.create!( name: "Example User",
     				activated_at: Time.zone.now)
 end
 
-
-
 users = User.order(:created_at)
 users.each do |user|
 	user.create_user_detail(introduction: 'introPH', country: 'AL', medium: 'Oil' )
 end
 
 users = User.order(:created_at).take(6)
-20.times do
+users.each do |user|
+	user.create_user_detail(introduction: 'introPH', country: 'AF', medium: 'Watercolour' )
+end
+
+10.times do
+	title = Faker::Book.title
 	content = Faker::Lorem.sentence(5)
+	medium = 'Acrylic'
+	width = Faker::Number.between(10, 50)
+	height = Faker::Number.between(10, 50)
+	price = Faker::Commerce.price
 	users.each do |user| 
 		picture = Faker::Placeholdit.image
-		user.micropost.create!(content: content, remote_picture_url: picture)
+		user.micropost.create!(title: title, content: content, remote_picture_url: picture, medium: medium, width: width, height: height, price: price)
 	end
 end
 

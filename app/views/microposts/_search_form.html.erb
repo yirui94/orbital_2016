@@ -1,13 +1,44 @@
 <div class="row">
   <div class="col-lg-6">
-      <%= form_tag(microposts_path, :method => "get", id: "search-form-artworks") do %>
-      	  <div class="input-group">
-		  <%= text_field_tag :search, params[:search], placeholder: "Search Artworks",
-							  class: "form-control" %>
-	      <span class="input-group-btn">
-		  <%= submit_tag "Search!", class: "btn btn-default" %>
-	      </span>
-          </div>
+      <%= form_tag(microposts_path, :method => "get", id: "search-form-artworks", class: "form-horizontal") do %>
+		  	<div>
+				<%= text_field_tag :search, params[:search], placeholder: "Search Artworks by Title",
+								  class: "form-control" %>
+		
+				<%= label_tag :country, "Country" %>
+				<%= select_tag :country, options_for_select(ISO3166::Country.translations.invert),
+												include_blank: 'Select a country',
+												 class: 'form-control' %>
+										
+				<%= label_tag :medium, "Medium of Specialisation" %>
+				<%= select_tag :medium,
+								options_for_select([['Oil', 'Oil'], ['Watercolour', 'Watercolour'],
+									   ['Acrylic', 'Acrylic'], ['Gouache', 'Gouache'],
+									   ['Pencil/Pen', 'Pencil/Pen'], ['Others', 'Others']]), 
+										include_blank: 'Select a medium',
+										class: 'form-control' %>
+
+				<%= label_tag :price, "Maximum price" %>
+				<div class= "field input-group">
+					<span class="input-group-addon">SGD</span>
+					<%= number_field_tag :price, nil, in: 0..99 , step: 0.01, class: 'form-control' %>
+				</div>
+
+				<%= label_tag :width, "Width and Height" %>
+				<div class= "field input-group">
+					<span class="input-group-addon">W</span>
+					<%= number_field_tag :width, nil, in: 0.00..99.00, step: 0.25, class: 'form-control' %>
+					<span class="input-group-addon">Inches</span>
+				</div>
+
+				<div class= "field input-group">
+					<span class="input-group-addon">H</span>
+					<%= number_field_tag :height, nil, in: 0.00..99.00, step: 0.25, class: 'form-control' %>
+					<span class="input-group-addon">Inches</span>
+				</div>
+
+				<%= submit_tag "Search!", class: "btn btn-default" %>
+          	</div>
 	   <% end %>
   </div>
 </div>

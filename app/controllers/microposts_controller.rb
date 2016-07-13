@@ -21,10 +21,35 @@ class MicropostsController < ApplicationController
 
 	def index
 		if params[:search]
-			@microposts = Micropost.search(params[:search]).paginate(page: params[:page])
+			@microposts = Micropost.has_title(params[:search]).paginate(page: params[:page])
 		else
 			@microposts = Micropost.paginate(page: params[:page])
 		end
+		@microposts = @microposts.has_country(params[:country]) if params[:country].present?
+   		@microposts = @microposts.has_medium(params[:medium]) if params[:medium].present?
+   		@microposts = @microposts.has_width(params[:width]) if params[:width].present?
+   		@microposts = @micropost.has_height(params[:height]) if params[:height].present?
+   		
+   		if params[:price]
+   			@microposts = @microposts.has_price(params[:price]).by_price
+   		end
+	end
+
+	def show
+  		@micropost = Micropost.find(params[:id])
+  		@user = @micropost.user
+    	@user_detail = @user.user_detail
+	    if !@user_detail.country.blank?
+	      @user_detail.country = ISO3166::Country.find_country_by_alpha2(@user_detail.country).name
+	    end
+	end
+
+	def edit
+
+	end
+
+	def update
+
 	end
 
 	private

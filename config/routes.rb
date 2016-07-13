@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :account_activations, only: [:edit]
-  resources :microposts, only: [:create, :destroy, :index], path: 'artworks'
+  resources :microposts, only: [:create, :destroy, :index, :edit, :update, :show], path: 'artworks'
   resources :relationships, only: [:create, :destroy]
   resources :user_details, only: [:edit, :update], path: 'profile'
 
