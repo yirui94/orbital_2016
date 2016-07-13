@@ -3,19 +3,12 @@
 
 <%= render 'search_form' %>
 
-<% if @microposts.empty? %>
+<div class="container-fluid">
+	<h1>Browse Artworks</h1>
+	<br>
 
-	<p>There are no artworks described by: <%= params[:search] %></p>
-
-<% else %>
-	<br><br>
-		<h1>Recently posted artworks</h1>
-	<br><br>
-	
-	<div class="container-fluid">
-		<ol class = "microposts">
-			<%= render @microposts %>
-		</ol>
-		<%= will_paginate @microposts %>
-	</div>
-<% end %>
+	<ol class = "microposts">
+		<%= render @microposts %>
+	</ol>
+	<%= will_paginate @microposts %>
+</div>

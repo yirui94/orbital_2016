@@ -1,6 +1,3 @@
-<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
-<link rel="stylesheet" href="http://cdnjs.cloudfare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-
 <% provide(:title, 'All Artists') %>
 <div class="container-fluid">
 	<div class="row">
@@ -17,7 +14,7 @@
 		<ul class="w3-ul w3-card-4">
 			<li class="w3-padding-16">
 				<% if logged_in? && current_user.admin? && !current_user?(user) %>
-				<button class="w3-btn w3-right w3-round -xxlarge"><%= link_to "delete", user, method: :delete, data: { confirm: "You sure?"} %></button>
+					<button class="w3-btn w3-right w3-round -xxlarge"><%= link_to "delete", user, method: :delete, data: { confirm: "You sure?"} %></button>
 				<% end %>
 				<class="w3-left w3-circle w3-margin-right" style="width:60px"><%= gravatar_for user %>
 				<span class="w3-xlarge"><%= link_to user.name, user %></span><br>
@@ -27,18 +24,4 @@
 		</ul>
 	<% end %>
 	<%= will_paginate %>
-	</div>
-	
-<!-- 	<ul class = "users">
-		<% @users.each do |user| %>
-			<li>
-				<%= gravatar_for user, size: 50 %>
-				<%= link_to user.name, user %>
-				<% if logged_in? && current_user.admin? && !current_user?(user) %>
-					| <%= link_to "delete", user, method: :delete,
-													data: { confirm: "You sure?"} %>
-				<% end %>
-			</li>
-		<% end %>
-	</ul>
-	<%= will_paginate %>   -->
+</div>
