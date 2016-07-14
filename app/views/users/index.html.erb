@@ -8,7 +8,7 @@
 	</div>
 </div>
 	<div class ="container-fluid">
-	<h1> Our Artists</h1>
+	<h1>Our Artists</h1>
 	<br>
 	<% @users.each do |user| %>
 		<ul class="w3-ul w3-card-4">
@@ -16,9 +16,15 @@
 				<% if logged_in? && current_user.admin? && !current_user?(user) %>
 					<button class="w3-btn w3-right w3-round -xxlarge"><%= link_to "delete", user, method: :delete, data: { confirm: "You sure?"} %></button>
 				<% end %>
+
 				<class="w3-left w3-circle w3-margin-right" style="width:60px"><%= gravatar_for user %>
 				<span class="w3-xlarge"><%= link_to user.name, user %></span><br>
-				<span> <%= ISO3166::Country.find_country_by_alpha2(user.user_detail.country).name %></span><br>
+				<span>
+					<% if !user.user_detail.country.blank? %>
+						 <%= ISO3166::Country.find_country_by_alpha2(user.user_detail.country).name %></span><br>
+					<% else %> 
+					<% end %>
+				</span><br>
 				<span> <%= user.user_detail.medium %> </span>
 			</li>
 		</ul>
