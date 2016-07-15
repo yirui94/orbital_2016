@@ -16,26 +16,32 @@
 	<br>
 	<br>
 	<div class="container-fluid">
-		<header class="w3-container w3-teal">
 			<h2><center>Recently posted artworks</center></h2>
-		</header>
 		<br><br>
 	</div>
 
 	<%= render 'shared/feed' %>
-	
+
 <% else %>
 	<div class="bg"> </div>
 	<div class="jumbotron">
-		<h1>Your online artgallery and marketplace</h1>
+		<h1>Artpraiser</h1>
+		<h2>Online art gallery and marketplace</h2>
+		<p>Sign up now to upload your artworks
+			and easily connect with artists and buyers alike.</p>
+		<%= link_to "Sign up", signup_path, class: "btn btn-primary" %>
 	</div>
-	
-	<%= render 'shared/top_artists' %>
-	<br><br>
-	<%= render 'shared/top_artworks' %>
-	<br><br>
-	<%= render 'shared/final_features' %>
 
+	<div class= "container-fluid">
+		<h1 class= "center">
+			Featured
+		</h1>
+		<h3 class= "center">Support your local artists,
+			here are some of their artworks</h3>
+		<div class= "container">
+			<%= render @micropost %>
+		</div>
+	</div>
 <% end %>
 
 

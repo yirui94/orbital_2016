@@ -15,15 +15,17 @@ class Micropost < ActiveRecord::Base
 
   default_scope -> { order(created_at: :desc) }
 
-  scope :by_price, -> { order(price: :desc) }
+  scope :random, -> { reorder("RANDOM()") }
 
-  scope :has_title, -> (title) { 
+  scope :by_price, -> { reorder(price: :desc) }
+
+  scope :has_title, -> (title) {
      if Rails.env.production?
       Micropost.where("title ILIKE ?", "%#{title}%")
     else
       Micropost.where("title LIKE ?", "%#{title}%")
     end
-  } 
+  }
 
   scope :has_country, -> (country) {
     includes(:user_detail).where(user_details: { country: country })

@@ -1,13 +1,10 @@
 <% provide(:title, 'All Artists') %>
-<div class="container-fluid">
 	<div class="row">
 		<h1>Browse Artists</h1>
 
 		<%= render 'search_form' %>
 		<br>
 	</div>
-</div>
-	<div class ="container-fluid">
 	<h1>Our Artists</h1>
 	<br>
 	<% @users.each do |user| %>
@@ -22,7 +19,7 @@
 				<span>
 					<% if !user.user_detail.country.blank? %>
 						 <%= ISO3166::Country.find_country_by_alpha2(user.user_detail.country).name %></span><br>
-					<% else %> 
+					<% else %>
 					<% end %>
 				</span><br>
 				<span> <%= user.user_detail.medium %> </span>
@@ -30,4 +27,3 @@
 		</ul>
 	<% end %>
 	<%= will_paginate %>
-</div>
