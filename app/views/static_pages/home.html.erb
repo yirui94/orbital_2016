@@ -1,25 +1,18 @@
 <% if logged_in? %>
-	<div class="container-fluid">
-		<aside class="col-md-5">
-			<section class="user_info">
-				<%= render 'shared/user_info' %>
-			</section>
-			<section class="stats">
-				<%= render 'shared/stats' %>
-			</section>
-		</aside>
+	<aside class="col-md-5">
+		<section class="user_info">
+			<%= render 'shared/user_info' %>
+		</section>
+		<section class="stats">
+			<%= render 'shared/stats' %>
+		</section>
 
-		<section class="micropost_form col-md-6 col-md-offset-1">
+		<section class="micropost_form col-md-8">
 			<%= render 'shared/micropost_form' %>
 		</section>
-	</div>
-	<br>
-	<br>
-	<div class="container-fluid">
-			<h2><center>Recently posted artworks</center></h2>
-		<br><br>
-	</div>
+	</aside>
 
+	<h2>Recently posted artworks</h2>
 	<%= render 'shared/feed' %>
 
 <% else %>

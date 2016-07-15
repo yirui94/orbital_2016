@@ -12,10 +12,10 @@
 	<body>
 		<%= render 'layouts/header' %>
 		<div class = "container-fluid">
+			<div class = "container">
 			<% flash.each do |message_type, msg| %>
 				<%= content_tag(:div, msg, class: "alert alert-#{message_type}") %>
 			<% end %>
-			<div class = "container">
 				<%= yield %>
 			</div>
 			<%= render 'layouts/footer' %>
