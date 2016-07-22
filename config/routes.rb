@@ -19,6 +19,10 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :user_details, only: [:edit, :update], path: 'profile'
 
+  resources :conversations do
+    resources :messages
+  end
+
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'

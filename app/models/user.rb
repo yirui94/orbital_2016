@@ -1,14 +1,19 @@
 class User < ActiveRecord::Base
 	has_one :user_detail, dependent: :destroy
 	has_many :micropost, dependent: :destroy
+
 	has_many :active_relationships, class_name: "Relationship",
 									foreign_key: "follower_id",
 									dependent: :destroy
 	has_many :passive_relationships, class_name: "Relationship",
 									 foreign_key: "followed_id",
 									 dependent: :destroy
+
 	has_many :following, through: :active_relationships, source: :followed
 	has_many :followers, through: :passive_relationships, source: :follower
+
+	has_many :conversations, :foreign_key => :sender_id,
+										dependent: :destroy
 
 	attr_accessor :remember_token, :activation_token, :reset_token
 
@@ -18,18 +23,18 @@ class User < ActiveRecord::Base
 	before_create :create_activation_digest
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\d.]+\.[a-z]+\z/i
 	validates :email, presence: true, length: { maximum: 255},
-										format: { with: VALID_EMAIL_REGEX },
-										uniqueness: { case_sensitive: false } 
+									 	format: { with: VALID_EMAIL_REGEX },
+										uniqueness: { case_sensitive: false }
 	has_secure_password
 	validates :password, length: { minimum: 8 }, allow_blank: true
 
-	scope :has_name, -> (name) { 
+	scope :has_name, -> (name) {
 		if Rails.env.production?
 			User.where("name ILIKE ?", "%#{name}%")
 		else
 			User.where("name LIKE ?", "%#{name}%")
-		end 
-	}	
+		end
+	}
 
 	scope :has_country, -> (country) {
 		includes(:user_detail).where(user_details: { country: country })
@@ -40,7 +45,10 @@ class User < ActiveRecord::Base
 	}
 
 	def feed
-		Micropost.where("user_id = ?", id)
+		following_ids = "SELECT followed_id FROM relationships
+                        WHERE  follower_id = :user_id"
+     Micropost.where("user_id IN (#{following_ids})
+                      OR user_id = :user_id", user_id: id)
 	end
 
 	def User.digest(string)

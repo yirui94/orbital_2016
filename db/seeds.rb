@@ -23,7 +23,7 @@ User.create!( name: "Example User",
 					password: password,
 					password_confirmation: password,
 					activated: true,
-    				activated_at: Time.zone.now)
+    			activated_at: Time.zone.now)
 end
 
 users = User.order(:created_at)
@@ -43,7 +43,7 @@ end
 	width = Faker::Number.between(10, 50)
 	height = Faker::Number.between(10, 50)
 	price = Faker::Commerce.price
-	users.each do |user| 
+	users.each do |user|
 		picture = Faker::Placeholdit.image
 		user.micropost.create!(title: title, content: content, remote_picture_url: picture, medium: medium, width: width, height: height, price: price)
 	end

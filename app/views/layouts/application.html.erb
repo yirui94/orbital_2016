@@ -7,7 +7,9 @@
 	  <%= javascript_include_tag 'application',
 	  							 'data-turbolinks-track' => true %>
 	  <%= csrf_meta_tags %>
+		<%= stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css' %>
 
+		<meta content='<%= logged_in? ? current_user.id : "" %>' name='user-id'/>
 	</head>
 	<body>
 		<%= render 'layouts/header' %>
@@ -22,4 +24,21 @@
 			<%= debug(params) if Rails.env.development? %>
 		</div>
 	</body>
+	<% if current_user %>
+   	<script type="text/javascript">
+        channel = <%= raw ('"' + '/notifications' + current_user.id.to_s + '"') %>
+        PrivatePub.subscribe(channel, function(data) {
+
+        var sender_id = data.sid;
+        var recipient_id = data.rip;
+        var conversation_id = data.cid;
+
+        $.post("/conversations", { sender_id: sender_id, recipient_id: recipient_id }, function (data) {
+            chatBox.chatWith(conversation_id);
+        });
+
+        });
+    </script>
+    <%= subscribe_to "/notifications" + current_user.id.to_s %>
+    <% end %>
 </html>
