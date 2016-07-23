@@ -16,12 +16,17 @@
 		<section class='stats'>
 			<%= render 'shared/stats' %>
 		</section>
+		<section class='buttons'>
+			<% if logged_in? %>
+					<%= render 'follow_form' %>
+					<br>
+					<%= link_to "Send Message", "#", class: "w3-btn w3-round-xlarge w3-green
+								start-conversation", "data-sid" => current_user.id,
+								"data-rip" => @user.id %>
+			<% end %>
+		</section>
 	</aside>
 	<div class="col-md-4">
-		<%= render 'follow_form' if logged_in? %>
-		<%= link_to "Send Message", "#", class: "btn btn-success btn-xs
-					start-conversation", "data-sid" => current_user.id,
-					"data-rip" => @user.id %>
 		<% if @user.micropost.any? %>
 			<h3>Artworks (<%= @user.micropost.count %>)</h3>
 			<ol class= "microposts">
