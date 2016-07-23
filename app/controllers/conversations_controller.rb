@@ -1,7 +1,7 @@
 class ConversationsController < ApplicationController
   before_action :logged_in_user
 
-  layout false
+  layout false, except: :index
 
   def create
     if Conversation.between(params[:sender_id],params[:recipient_id]).present?
@@ -18,6 +18,16 @@ class ConversationsController < ApplicationController
     @reciever = interlocutor(@conversation)
     @messages = @conversation.messages
     @message = Message.new
+  end
+
+  def index
+    @conversations = Conversation.involving(current_user)
+  end
+
+  def destroy
+    Conversation.find(params[:id]).destroy
+    flash[:success] = "Conversation deleted"
+    redirect_to conversations_path
   end
 
   private

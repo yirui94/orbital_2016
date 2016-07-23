@@ -25,11 +25,11 @@ class MicropostsController < ApplicationController
 		else
 			@microposts = Micropost.paginate(page: params[:page])
 		end
-		@microposts = @microposts.has_country(params[:country]) if params[:country].present?
+	  	@microposts = @microposts.has_country(params[:country]) if params[:country].present?
    		@microposts = @microposts.has_medium(params[:medium]) if params[:medium].present?
    		@microposts = @microposts.has_width(params[:width]) if params[:width].present?
    		@microposts = @micropost.has_height(params[:height]) if params[:height].present?
-   		
+
    		if params[:price]
    			@microposts = @microposts.has_price(params[:price]).by_price
    		end

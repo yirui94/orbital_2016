@@ -1,0 +1,20 @@
+<% provide(:title, 'All Conversations') %>
+<div class="row">
+	<h1>Active Conversations</h1>
+	<br>
+</div>
+<h1>Your conversations</h1>
+<br>
+<% @conversations.each do |conversation| %>
+	<ul class="w3-ul w3-card-4">
+		<li class="w3-padding-16">
+				<button class="w3-btn w3-right w3-round -xxlarge"><%= link_to "delete", conversation, method: :delete, data: { confirm: "You sure?"} %></button>
+
+			<class="w3-left w3-circle w3-margin-right" style="width:60px"><%= gravatar_for conversation.recipient %>
+			<span class="w3-xlarge"><%= link_to conversation.recipient.name, conversation.recipient %></span><br>
+			<%= link_to "Send Message", "#", id: "chat-artwork", class: "w3-btn w3-round-xlarge w3-green
+						start-conversation", "data-sid" => conversation.sender_id,
+						"data-rip" => conversation.recipient_id %>
+		</li>
+	</ul>
+<% end %>
