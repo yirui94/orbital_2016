@@ -20,9 +20,16 @@
 					<% if !user.user_detail.country.blank? %>
 						 <%= ISO3166::Country.find_country_by_alpha2(user.user_detail.country).name %></span><br>
 					<% else %>
+							<br>
 					<% end %>
 				</span><br>
-				<span> <%= user.user_detail.medium %> </span>
+				<span>
+					<% if !user.user_detail.medium.blank? %>
+							<%= user.user_detail.medium %>
+					<% else %>
+							<br>
+					<% end %>
+				</span>
 			</li>
 		</ul>
 	<% end %>
